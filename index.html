@@ -3,34 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Contributions</title>
+    <title>Matthew Lundeen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        #calendar {
-            margin: 20px auto;
-            max-width: 1000px;
+        #parallax-image {
+            position: fixed;
+            top: -5%;
+            left: 0;
+            width: 100%;
+            height: 110%;
+            background-image: url('img/milad-fakurian-OzSDYGKyY1I-unsplash.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center top;
+            z-index: -1;
+            will-change: transform;
         }
     </style>
-    <!-- Include GitHub Calendar CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-calendar@latest/dist/github-calendar.min.css">
 </head>
-<body>
-    <h1>GitHub Contributions for decentishdev</h1>
-    <div id="calendar">Loading...</div>
+<body class="text-white bg-white">
+    <div id="parallax-image"></div>
 
-    <!-- Include GitHub Calendar JS -->
-    <script src="https://cdn.jsdelivr.net/npm/github-calendar@latest/dist/github-calendar.min.js"></script>
+    <div class="relative p-32">
+        <div class="w-full flex flex-col items-left justify-center">
+            <p class="text-2xl text-white">Hi, I'm</p>
+            <h1 class="text-6xl font-bold text-white mb-6">Matthew Lundeen</h1>
+        
+            <div class="flex space-x-4 mt-6">
+                <a href="https://github.com/decentishDev/" target="_blank" class="text-white hover:text-orange-400 transition-colors duration-300">
+                    <i class="fab fa-github text-3xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/matthew-lundeen-2241192b6/" target="_blank" class="text-white hover:text-blue-400 transition-colors duration-300">
+                    <i class="fab fa-linkedin-in text-3xl"></i>
+                </a>
+                <a href="https://www.instagram.com/matthewlundeen25/" target="_blank" class="text-white hover:text-pink-400 transition-colors duration-300">
+                    <i class="fab fa-instagram text-3xl"></i>
+                </a>
+            </div>
+            <p class="text-white text-2xl w-3/4 pt-2 pb-32">
+                I'm a software engineer and computer science student interested in mobile app development, graphic design, and machine learning. 
+            </p>
+        </div>        
+
+        <!-- Portfolio Section -->
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-white mb-6 text-left">Portfolio</h2>
+            <div class="space-y-10">
+                <!-- Project Example -->
+                <div class="flex items-center space-x-10 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg overflow-hidden p-6">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white">Project 1</h3>
+                        <p class="text-gray-200 mt-2">Description of Project 1...</p>
+                        <a href="#" class="mt-4 inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">View Project</a>
+                    </div>
+                    <img src="https://via.placeholder.com/1200x400" alt="Project 1" class="w-1/2 rounded-md">
+                </div>
+
+                <div class="flex items-center space-x-10 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg overflow-hidden p-6">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white">Project 2</h3>
+                        <p class="text-gray-200 mt-2">Description of Project 2...</p>
+                        <a href="#" class="mt-4 inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">View Project</a>
+                    </div>
+                    <img src="https://via.placeholder.com/1200x400" alt="Project 2" class="w-1/2 rounded-md">
+                </div>
+
+                <div class="flex items-center space-x-10 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg overflow-hidden p-6">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white">Project 3</h3>
+                        <p class="text-gray-200 mt-2">Description of Project 3...</p>
+                        <a href="#" class="mt-4 inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">View Project</a>
+                    </div>
+                    <img src="https://via.placeholder.com/1200x400" alt="Project 3" class="w-1/2 rounded-md">
+                </div>
+
+                <div class="flex items-center space-x-10 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg overflow-hidden p-6">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white">Project 4</h3>
+                        <p class="text-gray-200 mt-2">Description of Project 4...</p>
+                        <a href="#" class="mt-4 inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">View Project</a>
+                    </div>
+                    <img src="https://via.placeholder.com/1200x400" alt="Project 4" class="w-1/2 rounded-md">
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto mt-16 text-left">
+            <h2 class="text-4xl font-bold text-white mb-6">About Me</h2>
+            <p class="text-white">
+                Hello! I'm Matthew Lundeen, a passionate developer with a focus on creating beautiful and functional web applications. 
+            </p>
+        </div>
+    </div>
+
     <script>
-        // Initialize GitHub Calendar
-        GitHubCalendar("#calendar", "decentishdev", { responsive: true });
+        const parallaxImage = document.getElementById('parallax-image');
+        const content = document.body;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const contentHeight = content.scrollHeight - window.innerHeight;
+            const parallaxOffset = (scrollTop / contentHeight) * 20;
+
+            parallaxImage.style.backgroundPositionY = `${parallaxOffset}%`;
+        });
     </script>
 </body>
 </html>
