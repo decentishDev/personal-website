@@ -55,7 +55,7 @@
                     <div class="flex flex-col justify-between flex-1 space-y-4">
                         <div>
                             <h3 class="text-2xl font-bold text-white">Dendritic Learning</h3>
-                            <p class="text-gray-200 mt-2 text-lg">Dendritic Learning is a studying app built on the ideas of making learning more natural, efficient, and accessible. It uses a variety of new methods that allow it to better teach most subjects, such as writing recognition, flowchart-style 'web sets', drawing, flashcards, and more. It is currently being tested in a closed beta at some high schools, and will soon be released for all students.</p>
+                            <p class="text-gray-200 mt-2 lg:text-lg">Dendritic Learning is a studying app built on the ideas of making learning more natural, efficient, and accessible. It uses a variety of new methods that allow it to better teach most subjects, such as writing recognition, flowchart-style 'web sets', drawing, flashcards, and more. It is currently being tested in a closed beta at some high schools, and will soon be released for all students.</p>
                             <br>
                             <div class="text-gray-200 flex items-center space-x-2">
                                 <i class="fas fa-medal"></i>
@@ -198,20 +198,10 @@
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const contentHeight = content.scrollHeight - window.innerHeight;
-            const parallaxOffset = (scrollTop / contentHeight) * 30 * getParallaxFactor();
+            const parallaxOffset = (scrollTop / contentHeight) * 15 * (window.devicePixelRatio || 1);
 
             parallaxImage.style.backgroundPositionY = `${parallaxOffset}%`;
         });
-
-        function getParallaxFactor() {
-            const screenWidth = window.innerWidth;
-            const devicePixelRatio = window.devicePixelRatio || 1;
-
-            // Adjust parallax speed based on screen width or pixel density
-            if (screenWidth > 1024) return 0.5; // Desktop
-            if (screenWidth > 768) return 0.3; // Tablets
-            return 0.1 * devicePixelRatio; // Mobile
-        }
     </script>
 </body>
 </html>
