@@ -23,7 +23,7 @@
         }
     </style>
 </head>
-<body class="text-white bg-white">
+<body class="text-white bg-indigo-950">
     <div id="parallax-image"></div>
 
     <div class="relative p-40">
@@ -131,9 +131,16 @@
         </div>        
         <div class="container mx-auto mt-32 text-left">
             <h2 class="text-4xl font-bold text-white mb-6">About Me</h2>
-            <p class="text-white text-xl mb-8">
-                Hello! I'm Matthew Lundeen, a software engineer and computer science student interested in mobile app development, graphic design, and machine learning. It's incredible seeing ideas come to life, and coding has always seemed like a great medium to create.
+            <p class="text-white text-xl">
+                Hello! I'm Matthew Lundeen, a software engineer and computer science student interested in mobile app development, graphic design, and machine learning. While I've tried out pretty much every field related to media and making things, computer science has stayed with me the most. It's incredibile seeing ideas come to life, and coding has always seemed like a great medium to create.
             </p>
+            <br>
+            <p class="text-white text-xl">
+                I'm mostly working within front-end development at the moment, but feel free to check out my 
+                <a href="https://example.com" class="text-blue-400 hover:underline">other portfolio</a>
+                or reach out about anything creative, ranging from graphic design to photography to game dev.
+            </p>
+            <br>
             <p class="text-white text-xl mb-8">
                 I'm skilled in a variety of programming languages and frameworks:
             </p>
@@ -191,10 +198,20 @@
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const contentHeight = content.scrollHeight - window.innerHeight;
-            const parallaxOffset = (scrollTop / contentHeight) * 20;
+            const parallaxOffset = (scrollTop / contentHeight) * 30 * getParallaxFactor();
 
             parallaxImage.style.backgroundPositionY = `${parallaxOffset}%`;
         });
+
+        function getParallaxFactor() {
+            const screenWidth = window.innerWidth;
+            const devicePixelRatio = window.devicePixelRatio || 1;
+
+            // Adjust parallax speed based on screen width or pixel density
+            if (screenWidth > 1024) return 0.5; // Desktop
+            if (screenWidth > 768) return 0.3; // Tablets
+            return 0.1 * devicePixelRatio; // Mobile
+        }
     </script>
 </body>
 </html>
