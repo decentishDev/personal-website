@@ -6,6 +6,7 @@
     <title>Matthew Lundeen</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <style>
         #parallax-image {
             position: fixed;
@@ -25,7 +26,7 @@
 <body class="text-white bg-white">
     <div id="parallax-image"></div>
 
-    <div class="relative p-32">
+    <div class="relative p-40">
         <div class="w-full flex flex-col items-left justify-center">
             <p class="text-2xl text-white">Hi, I'm</p>
             <h1 class="text-6xl font-bold text-white mb-6">Matthew Lundeen</h1>
@@ -46,85 +47,92 @@
             </p>
         </div>        
 
-        <!-- Portfolio Section -->
         <div class="container mx-auto">
             <h2 class="text-4xl font-bold text-white mb-6 text-left">Portfolio</h2>
             <div class="space-y-10">
-                <div class="flex bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg overflow-hidden p-6">
-                    <!-- Left Content -->
+                <!-- Project 1 -->
+                <div class="flex bg-white bg-opacity-10 backdrop-blur-md rounded-[32px] shadow-lg overflow-hidden p-6">
                     <div class="flex flex-col justify-between flex-1 space-y-4">
                         <div>
                             <h3 class="text-2xl font-bold text-white">Dendritic Learning</h3>
-                            <p class="text-gray-200 mt-2">Description of Project 1...</p>
+                            <p class="text-gray-200 mt-2 text-lg">Dendritic Learning is a studying app built on the ideas of making learning more natural, efficient, and accessible. It uses a variety of new methods that allow it to better teach most subjects, such as writing recognition, flowchart-style 'web sets', drawing, flashcards, and more. It is currently being tested in a closed beta at some high schools, and will soon be released for all students.</p>
+                            <br>
+                            <div class="text-gray-200 flex items-center space-x-2">
+                                <i class="fas fa-medal"></i>
+                                <span>Winner of the 2024 D214 App Showcase</span>
+                            </div>
+                            <div class="text-gray-200 flex items-center space-x-2">
+                                <i class="fas fa-medal"></i>
+                                <span>Winner of the 2024 Congressional App Challenge</span>
+                            </div>
                         </div>
                         <div class="flex justify-between mt-auto space-x-4">
-                            <!-- Adjusted GitHub Button -->
                             <a href="#" class="text-gray-200 hover:text-gray-400 flex items-center space-x-2 transition-all">
                                 <i class="fas fa-arrow-up-right-from-square"></i>
                                 <span>Open website</span>
                             </a>
-                            <!-- Adjusted Open Project Button -->
-                            <a href="#" class="text-gray-200 hover:text-gray-400 flex items-center space-x-2 transition-all">
-                                <i class="fas fa-file-alt"></i>
-                                <span>Open Project</span>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Right Image -->
-                    <img src="img/dendriticpresention.jpeg" alt="Project 1" class="w-1/2 rounded-md ml-6">
-                </div>
-                <div class="flex bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg overflow-hidden p-6">
-                    <!-- Left Content -->
-                    <div class="flex flex-col justify-between flex-1 space-y-4">
-                        <div>
-                            <h3 class="text-2xl font-bold text-white">Project 1</h3>
-                            <p class="text-gray-200 mt-2">Description of Project 1...</p>
-                        </div>
-                        <div class="flex justify-between mt-auto space-x-4">
-                            <!-- Adjusted GitHub Button -->
-                            <a href="#" class="text-gray-200 hover:text-gray-400 flex items-center space-x-2 transition-all">
-                                <i class="fab fa-github"></i>
-                                <span>Open GitHub</span>
-                            </a>
-                            <!-- Adjusted Open Project Button -->
                             <a href="#" class="text-gray-200 hover:text-gray-400 flex items-center space-x-2 transition-all">
                                 <i class="fas fa-file-alt"></i>
                                 <span>Read more</span>
                             </a>
                         </div>
                     </div>
-                    <!-- Right Image -->
-                    <img src="img/Park214.png" alt="Project 1" class="w-1/4 rounded-md ml-6">
+                    <img src="img/dendriticpresention.jpeg" 
+                         alt="Dendritic Learning" 
+                         class="w-1/2 rounded-[16px] ml-6">
                 </div>
-                <div class="flex bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg overflow-hidden p-6">
-                    <!-- Left Content -->
+        
+                <!-- Project 2 -->
+                <div class="flex bg-white bg-opacity-10 backdrop-blur-md rounded-[32px] shadow-lg overflow-hidden p-6">
+                    <img src="img/Park214.png" 
+                         alt="Park214" 
+                         class="w-1/5 rounded-[16px] mr-6">
                     <div class="flex flex-col justify-between flex-1 space-y-4">
                         <div>
-                            <h3 class="text-2xl font-bold text-white">NASA ADC 2025</h3>
-                            <p class="text-gray-200 mt-2">Description of Project 1...</p>
+                            <h3 class="text-2xl font-bold text-white">Park214</h3>
+                            <p class="text-gray-200 mt-2 text-lg">Starting as my first exploration in machine learning, Park214 is an iOS app built for security guards to quickly check the status of cars parked in a specific lot. By using machine learning, it recognizes license plates and confirms whether or not a specific vehicle is in the given dataset. It is currently being implemented in District 214 schools as an update their system of parking passes.</p>
                         </div>
                         <div class="flex justify-between mt-auto space-x-4">
-                            <!-- Adjusted GitHub Button -->
                             <a href="#" class="text-gray-200 hover:text-gray-400 flex items-center space-x-2 transition-all">
                                 <i class="fab fa-github"></i>
                                 <span>Open GitHub</span>
                             </a>
-                            <!-- Adjusted Open Project Button -->
                             <a href="#" class="text-gray-200 hover:text-gray-400 flex items-center space-x-2 transition-all">
                                 <i class="fas fa-file-alt"></i>
-                                <span>Open Project</span>
+                                <span>Read more</span>
                             </a>
                         </div>
                     </div>
-                    <!-- Right Image -->
-                    <img src="img/IMG_2221.png" alt="Project 1" class="w-1/2 rounded-md ml-6">
+                </div>
+        
+                <!-- Project 3 -->
+                <div class="flex bg-white bg-opacity-10 backdrop-blur-md rounded-[32px] shadow-lg overflow-hidden p-6">
+                    <div class="flex flex-col justify-between flex-1 space-y-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">NASA ADC 2025</h3>
+                            <p class="text-gray-200 mt-2 text-lg">The NASA App Development Challenge is a yearly national coding competition where students build applications to solve problems given by NASA. The 2025 challenge centered around processing and displaying the data of the Artemis II mission. Our app, created using the Unity game engine, is a flexible, easy-to-use, and powerful way to visualize the mission data. The contest is currently being judged, but results will come out soon!</p>
+                        </div>
+                        <div class="flex justify-between mt-auto space-x-4">
+                            <a href="#" class="text-gray-200 hover:text-gray-400 flex items-center space-x-2 transition-all">
+                                <i class="fab fa-github"></i>
+                                <span>Open GitHub</span>
+                            </a>
+                            <a href="#" class="text-gray-200 hover:text-gray-400 flex items-center space-x-2 transition-all">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Read more</span>
+                            </a>
+                        </div>
+                    </div>
+                    <img src="img/IMG_2221.png" 
+                         alt="NASA ADC 2025" 
+                         class="w-2/5 rounded-[16px] ml-6">
                 </div>
             </div>
-        </div>
+        </div>        
         <div class="container mx-auto mt-16 text-left">
             <h2 class="text-4xl font-bold text-white mb-6">About Me</h2>
             <p class="text-white">
-                Hello! I'm Matthew Lundeen, a passionate developer with a focus on creating beautiful and functional web applications. 
+                Hello! I'm Matthew Lundeen, a software engineer and computer science student interested in mobile app development, graphic design, and machine learning. 
             </p>
         </div>
     </div>
