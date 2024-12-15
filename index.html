@@ -195,6 +195,9 @@
             <p class="text-white text-xl mb-8">
                 Otherwise, feel free to reach out on any social platforms!
             </p>
+            <p id="debugtext" class="text-white text-xl mb-8">
+                Otherwise, feel free to reach out on any social platforms!
+            </p>
             <div class="flex space-x-4 mt-6">
                 <a href="https://github.com/decentishDev/" target="_blank" class="text-white hover:text-orange-400 transition-colors duration-300">
                     <i class="fab fa-github text-3xl"></i>
@@ -212,13 +215,16 @@
     <script>
         const parallaxImage = document.getElementById('parallax-image');
         const content = document.body;
+        const debugtext = document.getElementById('debugtext');
 
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const contentHeight = content.scrollHeight - window.innerHeight;
-            const parallaxOffset = (scrollTop / contentHeight) * 15 * (window.devicePixelRatio || 1);
+            const parallaxOffset = (scrollTop / contentHeight) * 15 * window.devicePixelRatio;
 
             parallaxImage.style.backgroundPositionY = `${parallaxOffset}%`;
+
+            debugtext.innerHTML = `scrollTop: ${scrollTop}, contentHeight: ${contentHeight}, window.devicePixelRatio: ${window.devicePixelRatio}, parallaxOffest: ${parallaxOffset}`;
         });
     </script>
 </body>
