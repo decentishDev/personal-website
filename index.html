@@ -220,7 +220,7 @@
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const contentHeight = content.scrollHeight - window.innerHeight;
-            const parallaxOffset = (scrollTop / contentHeight) * 15 / window.devicePixelRatio;
+            const parallaxOffset = (scrollTop / contentHeight) * 150 / window.devicePixelRatio;
 
             parallaxImage.style.backgroundPositionY = `${parallaxOffset}%`;
 
