@@ -1,46 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-black">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>NASA ADC 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <style>
-        #parallax-image {
-            position: fixed;
-            top: -5%;
-            left: 0;
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
             width: 100%;
-            height: 110%;
-            background-image: url('/img/background.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center top;
-            z-index: -1;
-            will-change: transform;
         }
-        /* #parallax-image {
-            position: absolute;
-            top: -5%;
+
+        canvas {
+            position: fixed;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 110%;
-            background-image: url('img/background.jpg');
-            background-size: cover;
-            background-position: center top;
+            height: 100%;
             z-index: -1;
-            will-change: transform;
-        } */
+        }
     </style>
 </head>
-<body class="text-white bg-indigo-950">
-    <div id="parallax-image"></div>
 
+<body>
     <div class="relative p-40">
         <div class="w-full flex flex-col items-left justify-center">
-            <a href="/" class="text-blue-400">&lt; Back</a>
+            <a href="/" class="inline-flex items-center text-blue-400 hover:text-blue-500 transition-colors pb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back
+            </a>
+
             <h1 class="text-6xl font-bold text-white mb-6">NASA ADC 2025</h1>
 <!--         
             <div class="flex space-x-4 mt-6">
@@ -55,34 +52,253 @@
                 </a>
             </div> -->
             <p class="text-white text-2xl w-full pt-2 pb-32">
-                More information 
+                Coming soon . . .
             </p>
         </div>    
     </div>
+    <canvas id="bg"></canvas>
     <script>
-        const parallaxImage = document.getElementById('parallax-image');
-        const content = document.body;
-        const debugtext = document.getElementById('debugtext');
+        (() => {
+            const canvas = document.getElementById('bg');
+            const ctx = canvas.getContext('2d', { alpha: false });
+            const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+            const blurA = document.createElement('canvas');
+            const blurB = document.createElement('canvas');
+            // const bA = blurA.getContext('2d', { willReadFrequently: true });
+            // const bB = blurB.getContext('2d', { willReadFrequently: true });
+            const bA = blurA.getContext('2d');
+            const bB = blurB.getContext('2d');
 
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const contentHeight = content.scrollHeight - window.innerHeight;
-            const parallaxOffset = (scrollTop / contentHeight) * 15 / window.devicePixelRatio;
+            const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-            parallaxImage.style.backgroundPositionY = `${parallaxOffset}%`;
+            const state = isMobile ? {
+                count: 4000,
+                decay: 0.34,
+                speed: 1.2,
+                scale: 0.0018,
+                glow: 0.5,
+                hueDrift: 1,
+                paused: false,
+                seed: Math.random() * 1e9 | 0,
+            } : {
+                count: 6000,
+                decay: 0.35,
+                speed: 1.2,
+                scale: 0.0009,
+                glow: 0.52,
+                hueDrift: 1,
+                paused: false,
+                seed: Math.random() * 1e9 | 0,
+            };
 
-            //debugtext.innerHTML = `scrollTop: ${scrollTop}, contentHeight: ${contentHeight}, window.devicePixelRatio: ${window.devicePixelRatio}, parallaxOffest: ${parallaxOffset}`;
-        });
+            let perm = new Uint8Array(512);
+            function reseedNoise() {
+                const seed = state.seed | 0;
+                const p = new Uint8Array(256);
+                for (let i = 0; i < 256; i++) p[i] = i;
+                let n = seed;
+                for (let i = 255; i > 0; i--) {
+                    n = (1103515245 * n + 12345) & 0x7fffffff;
+                    const j = n % (i + 1);
+                    const t = p[i]; p[i] = p[j]; p[j] = t;
+                }
+                for (let i = 0; i < 512; i++) perm[i] = p[i & 255];
+            }
+            reseedNoise();
+
+            function fade(t) { return t * t * t * (t * (t * 6 - 15) + 10) }
+            function lerp(a, b, t) { return a + (b - a) * t }
+            function grad(hash, x, y, z) {
+                const h = hash & 15; const u = h < 8 ? x : y; const v = h < 4 ? y : h === 12 || h === 14 ? x : z; return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
+            }
+            function noise3(x, y, z) {
+                let X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
+                x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
+                const u = fade(x), v = fade(y), w = fade(z);
+                const A = perm[X] + Y, AA = perm[A] + Z, AB = perm[A + 1] + Z;
+                const B = perm[X + 1] + Y, BA = perm[B] + Z, BB = perm[B + 1] + Z;
+                return lerp(
+                    lerp(
+                        lerp(grad(perm[AA], x, y, z), grad(perm[BA], x - 1, y, z), u),
+                        lerp(grad(perm[AB], x, y - 1, z), grad(perm[BB], x - 1, y - 1, z), u), v
+                    ),
+                    lerp(
+                        lerp(grad(perm[AA + 1], x, y, z - 1), grad(perm[BA + 1], x - 1, y, z - 1), u),
+                        lerp(grad(perm[AB + 1], x, y - 1, z - 1), grad(perm[BB + 1], x - 1, y - 1, z - 1), u), v
+                    ), w
+                );
+            }
+
+            function flowAngle(x, y, t) {
+                const s = state.scale;
+                const n = noise3(x * s, y * s, t) * 0.5 + 0.5;
+                const nx = noise3((x + 1) * s, y * s, t) - noise3((x - 1) * s, y * s, t);
+                const ny = noise3(x * s, (y + 1) * s, t) - noise3(x * s, (y - 1) * s, t);
+                return Math.atan2(nx, -ny) + n * 0.25;
+            }
+
+            let P = null;
+            let palette = [[200, 80, 1], [180, 70, 1], [210, 90, 1], [170, 60, 1]];
+
+            function setCount(n) {
+                state.count = n | 0;
+                const arr = new Float32Array(state.count * 5);
+                const W = canvas.width, H = canvas.height;
+                for (let i = 0; i < state.count; i++) {
+                    const x = Math.random() * W, y = Math.random() * H;
+                    const h = Math.random() * 360;
+                    arr[i * 5 + 0] = x; arr[i * 5 + 1] = y; arr[i * 5 + 2] = 0; arr[i * 5 + 3] = 0; arr[i * 5 + 4] = h;
+                }
+                P = arr;
+            }
+
+            function hsv(h, s, v) {
+                h /= 60; const c = v * s; const x = c * (1 - Math.abs(h % 2 - 1)); let r = 0, g = 0, b = 0;
+                switch (~~h) { case 0: r = c; g = x; break; case 1: r = x; g = c; break; case 2: g = c; b = x; break; case 3: g = x; b = c; break; case 4: r = x; b = c; break; default: r = c; b = x; }
+                const m = v - c; r = (r + m); g = (g + m); b = (b + m);
+                return `rgba(${(r * 255) | 0},${(g * 255) | 0},${(b * 255) | 0},0.06)`;
+            }
+
+            function resize() {
+                const w = Math.floor(innerWidth * dpr);
+                const h = Math.floor(innerHeight * dpr);
+
+                if (canvas.width !== w || canvas.height !== h) {
+                    const old = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+                    canvas.width = w;
+                    canvas.height = h;
+                    canvas.style.width = innerWidth + 'px';
+                    canvas.style.height = innerHeight + 'px';
+
+                    ctx.putImageData(old, 0, 0);
+                }
+
+                blurA.width = w * 0.5;
+                blurA.height = h * 0.5;
+                blurB.width = w * 0.5;
+                blurB.height = h * 0.5;
+            }
+
+            addEventListener('resize', resize);
+
+            function tick() {
+                if (!state.paused) {
+                    step();
+                    render();
+                }
+                requestAnimationFrame(tick);
+            }
+
+            function step() {
+                const W = canvas.width, H = canvas.height;
+                const t = performance.now() * 0.00015;
+                const sp = state.speed;
+
+                for (let i = 0; i < P.length; i += 5) {
+                    let x = P[i], y = P[i + 1], vx = P[i + 2], vy = P[i + 3], h = P[i + 4];
+                    const ang = flowAngle(x, y, t);
+                    vx += Math.cos(ang) * 0.3 * sp;
+                    vy += Math.sin(ang) * 0.3 * sp;
+                    vx *= 0.975; vy *= 0.975;
+                    x += vx; y += vy;
+
+                    const margin = 4;
+                    let wrapped = false;
+
+                    if (x < -margin) {
+                        x += W + 2 * margin; wrapped = true;
+                    } else if (x > W + margin) {
+                        x -= W + 2 * margin; wrapped = true;
+                    }
+                    if (y < -margin) {
+                        y += H + 2 * margin; wrapped = true;
+                    } else if (y > H + margin) {
+                        y -= H + 2 * margin; wrapped = true;
+                    }
+
+                    if (wrapped) {
+                        h = (h + 30 + Math.random() * 30) % 360;
+                    }
+
+                    h = (h + state.hueDrift * 0.01) % 360;
+                    P[i] = x; P[i + 1] = y; P[i + 2] = vx; P[i + 3] = vy; P[i + 4] = h;
+                }
+            }
+
+
+            function render() {
+                const W = canvas.width, H = canvas.height;
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.fillStyle = `rgba(0,0,0,${state.decay})`;
+                ctx.fillRect(0, 0, W, H);
+                ctx.globalCompositeOperation = 'lighter';
+                const buckets = 4;
+                for (let b = 0; b < buckets; b++) {
+                    const [h, s, v] = palette[b];
+                    ctx.fillStyle = hsv(h, s / 100, v);
+                    for (let i = b * 5; i < P.length; i += 5 * buckets) {
+                        const x = P[i], y = P[i + 1];
+                        ctx.fillRect(x, y, 1.2 * dpr, 1.2 * dpr);
+                    }
+                }
+                if (state.glow > 0) {
+                    const scale = 0.5; const w = (W * scale) | 0, h = (H * scale) | 0;
+                    bA.canvas.width = w; bA.canvas.height = h; bB.canvas.width = w; bB.canvas.height = h;
+                    bA.globalCompositeOperation = 'source-over';
+                    bA.clearRect(0, 0, w, h);
+                    bA.drawImage(canvas, 0, 0, w, h);
+                    boxBlur(bA, bB, 6);
+                    boxBlur(bB, bA, 6, true);
+                    ctx.globalCompositeOperation = 'screen';
+                    ctx.globalAlpha = state.glow;
+                    ctx.drawImage(bA.canvas, 0, 0, W, H);
+                    ctx.globalAlpha = 1;
+                    ctx.globalCompositeOperation = 'source-over';
+                }
+            }
+
+            function boxBlur(srcCtx, dstCtx, radius, vertical = false) {
+                const w = srcCtx.canvas.width, h = srcCtx.canvas.height;
+                const src = srcCtx.getImageData(0, 0, w, h);
+                const dst = dstCtx.createImageData(w, h);
+                const data = src.data, out = dst.data;
+                const r = Math.max(1, radius | 0);
+                const len = vertical ? h : w;
+                const lines = vertical ? w : h;
+                const window = r * 2 + 1;
+                for (let line = 0; line < lines; line++) {
+                    let accR = 0, accG = 0, accB = 0, accA = 0;
+                    let idx = vertical ? line * 4 : line * w * 4;
+                    let idxOut = idx;
+                    for (let k = -r; k <= r; k++) {
+                        const p = clampIndex(idx + (vertical ? k * w * 4 : k * 4), data.length);
+                        accR += data[p]; accG += data[p + 1]; accB += data[p + 2]; accA += data[p + 3];
+                    }
+                    for (let i = 0; i < len; i++) {
+                        out[idxOut] = (accR / window) | 0;
+                        out[idxOut + 1] = (accG / window) | 0;
+                        out[idxOut + 2] = (accB / window) | 0;
+                        out[idxOut + 3] = (accA / window) | 0;
+                        const pAdd = clampIndex(idx + (vertical ? (i + r + 1) * w * 4 : (i + r + 1) * 4), data.length);
+                        const pSub = clampIndex(idx + (vertical ? (i - r) * w * 4 : (i - r) * 4), data.length);
+                        accR += data[pAdd] - data[pSub];
+                        accG += data[pAdd + 1] - data[pSub + 1];
+                        accB += data[pAdd + 2] - data[pSub + 2];
+                        accA += data[pAdd + 3] - data[pSub + 3];
+                        idxOut += vertical ? w * 4 : 4;
+                    }
+                }
+                dstCtx.putImageData(dst, 0, 0);
+            }
+
+            function clampIndex(i, len) { return i < 0 ? 0 : (i >= len ? len - 4 : i); }
+
+            resize();
+            setCount(state.count);
+            requestAnimationFrame(tick);
+        })();
     </script>
-    <!-- <script>
-        document.addEventListener('scroll', () => {
-            const scrollPosition = window.pageYOffset;
-            const parallaxSpeed = 0.8; // Adjust this value to control the parallax speed
-            const parallaxImage = document.getElementById('parallax-image');
-            
-            parallaxImage.style.transform = `translateY(${scrollPosition * parallaxSpeed}px)`;
-        });
-    </script> -->
-    
 </body>
+
 </html>
