@@ -7,7 +7,7 @@
     <title>Other Projects</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <style>
         html,
         body {
@@ -29,17 +29,24 @@
 </head>
 
 <body>
-    <div class="relative p-40">
-        <div class="w-full flex flex-col items-left justify-center">
-            <a href="/" class="inline-flex items-center text-blue-400 hover:text-blue-500 transition-colors pb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-                Back
-            </a>
+    <div class="text-white m-2">
+        <div class="relative px-4 sm:px-8 md:px-20 py-20 sm:py-32">
+            <div
+                class="max-w-5xl mx-auto flex flex-col sm:items-start sm:text-start justify-center items-center text-center">
+                <a href="/" class="inline-flex items-center text-blue-400 hover:text-blue-500 transition-colors pb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back
+                </a>
 
-            <h1 class="text-6xl font-bold text-white mb-6">Other Projects</h1>
-<!--         
+                <h1 class="text-6xl font-bold text-white mb-6">Other Projects</h1>
+
+                <p class="text-white text-l w-full pt-2 pb-8">
+                    These are some my other projects, ranging from unfinished demos to decent products to fun designs. The only common theme, which continues across everything I make, (especially things shown on this site), is that I learned something from them. Each one might have had a new framework, lamnguage, process, idea, or specific bug. While they might not represent my current work or focus, they do represent how I've grown. Plus, they still might be interesting to some.
+                </p>
+                <!--         
             <div class="flex space-x-4 mt-6">
                 <a href="https://github.com/decentishDev/" target="_blank" class="text-white hover:text-orange-400 transition-colors duration-300">
                     <i class="fab fa-github text-3xl"></i>
@@ -51,10 +58,388 @@
                     <i class="fab fa-instagram text-3xl"></i>
                 </a>
             </div> -->
-            <p class="text-white text-2xl w-full pt-2 pb-32">
-                Coming soon . . .
-            </p>
-        </div>    
+
+                <h2 class="text-white font-bold text-3xl w-full pt-12 pb-4">
+                    Hardware - ish
+                </h2>
+
+                <div class="flex flex-col lg:flex-row bg-slate-600 bg-opacity-10 backdrop-blur-md rounded-[32px] shadow-lg overflow-hidden p-6 text-left">
+                    <div class="w-full lg:w-1/2 mb-6 lg:mb-0 lg:mr-6">
+                        <img src="img/eink.jpg" alt="E-Ink Weather Display"
+                            class="rounded-[16px] w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col justify-between flex-1 space-y-4 lg:p-4">
+                        <div>
+                            <h3 class="text-2xl font-bold">E-Ink Weather Display</h3>
+                            <!-- <div class="text-gray-200 flex items-center space-x-2 font-bold mt-2">
+                                <i class="fas fa-medal"></i>
+                                <span>National Winner</span>
+                            </div> -->
+                            <p class="text-gray-200 mt-4 text-sm sm:text-base">
+                                After buying parts and switching around purposes multiple times over a few years, this project ended up as a simple desk display for the date, weather, and an image. It is built out of a Raspberry Pi Zero 2 W, a Pimoroni 7 color e-ink display, and a custom photo frame. Developed in Python using Pillow, the Open-Meteo API, and the Unsplash API.
+                            </p>
+                        </div>
+                        <div class="flex justify-between mt-auto space-x-4 text-sm">
+                            <a href=""
+                                class="text-gray-500 hover:text-gray-500 flex items-center space-x-2">
+                                <i class="fas fa-images"></i>
+                                <span>See more</span>
+                            </a>
+                            <a href="https://github.com/decentishDev/Sweetgreen-games"
+                                class="text-gray-200 hover:text-gray-400 flex items-center space-x-2">
+                                <i class="fa-brands fa-github"></i>
+                                <span>View Github</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 class="text-white font-bold text-3xl w-full pt-12 pb-4">
+                    Apps and such
+                </h2>
+
+                <div class="space-y-10">
+
+                    <div class="flex flex-col lg:flex-row bg-slate-600 bg-opacity-10 backdrop-blur-md rounded-[32px] shadow-lg overflow-hidden p-6 text-left">
+                        <div class="w-full lg:w-1/2 mb-6 lg:mb-0 lg:mr-6">
+                            <img src="img/Adrift logo.jpg" alt="Adrift logo"
+                                class="rounded-[16px] w-full h-full object-cover">
+                        </div>
+                        <div class="flex flex-col justify-between flex-1 space-y-4 lg:p-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">Adrift</h3>
+                                <!-- <div class="text-gray-200 flex items-center space-x-2 font-bold mt-2">
+                                    <i class="fas fa-medal"></i>
+                                    <span>National Winner</span>
+                                </div> -->
+                                <p class="text-gray-200 mt-4 text-sm sm:text-base">
+                                    Zero-gravity intense FPS. Work in progress. Built in Unity using C#.
+                                </p>
+                            </div>
+                            <div class="flex justify-between mt-auto space-x-4 text-sm">
+                                <a href=""
+                                    class="text-gray-500 hover:text-gray-500 flex items-center space-x-2">
+                                    <i class="fas fa-images"></i>
+                                    <span>See more</span>
+                                </a>
+                                <a href="https://github.com/decentishDev/Sweetgreen-games"
+                                    class="text-gray-200 hover:text-gray-400 flex items-center space-x-2">
+                                    <i class="fa-brands fa-github"></i>
+                                    <span>View Github</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row bg-slate-600 bg-opacity-10 backdrop-blur-md rounded-[32px] shadow-lg overflow-hidden p-6 text-left">
+                        <div class="flex flex-col justify-between flex-1 space-y-4 lg:p-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">Snazzy Slope</h3>
+                                <!-- <div class="text-gray-200 flex items-center space-x-2 font-bold mt-2">
+                                    <i class="fas fa-medal"></i>
+                                    <span>2024 D214 App Showcase Winner</span>
+                                </div> -->
+                                <p class="text-gray-200 mt-4 text-sm sm:text-base">
+                                    One of my first attempts at using the Unity game engine, Snazzy Slope is a newer recreation of the classive 'Slope' game, found on many old games websites. The goal is to dodge obstacles and get the highest score possible. While it was made for fun, it also improved my C# skills and allowed me to bring a few math skills into making the game physics feel enjoyable and precise.
+                                </p>
+                            </div>
+                            <!-- <div class="flex justify-between mt-auto space-x-4 text-sm">
+                                <a href=""
+                                    class="text-gray-200 hover:text-gray-400 flex items-center space-x-2">
+                                    <i class="fas fa-arrow-up-right-from-square"></i>
+                                    <span>Open website</span>
+                                </a>
+                                <a href=""
+                                    class="text-gray-200 hover:text-gray-400 flex items-center space-x-2">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Read more</span>
+                                </a>
+                            </div> -->
+                            <div class="flex justify-between mt-auto space-x-4 text-sm">
+                                <a href=""
+                                    class="text-gray-500 hover:text-gray-500 flex items-center space-x-2">
+                                    <i class="fas fa-arrow-up-right-from-square"></i>
+                                    <span>Open website</span>
+                                </a>
+                                <a href=""
+                                    class="text-gray-500 hover:text-gray-500 flex items-center space-x-2">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Read more</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-1/2 mt-6 lg:mt-0 lg:ml-6">
+                            <img src="img/snazzyslope.png" alt="Dendritic Learning"
+                                class="rounded-[16px] w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row bg-slate-600 bg-opacity-10 backdrop-blur-md rounded-[32px] shadow-lg overflow-hidden p-6 text-left">
+                        <div class="w-full lg:w-1/2 mb-6 lg:mb-0 lg:mr-6">
+                            <img src="img/sweetgreengamescreenshots.png" alt="Sweetgreen Games screenshots"
+                                class="rounded-[16px] w-full h-full object-cover">
+                        </div>
+                        <div class="flex flex-col justify-between flex-1 space-y-4 lg:p-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">Sweetgreen Games</h3>
+                                <!-- <div class="text-gray-200 flex items-center space-x-2 font-bold mt-2">
+                                    <i class="fas fa-medal"></i>
+                                    <span>National Winner</span>
+                                </div> -->
+                                <p class="text-gray-200 mt-4 text-sm sm:text-base">
+                                    Created using Unity and C#, Sweetgreen Games is a partial recreation of the existing app for Sweetgreen, except with a new focus on playing games to earn points and rewards. This was created to assist a DECA project focused on marketing, and helped their team compete at the national level.
+                                </p>
+                            </div>
+                            <div class="flex justify-between mt-auto space-x-4 text-sm">
+                                <a href=""
+                                    class="text-gray-500 hover:text-gray-500 flex items-center space-x-2">
+                                    <i class="fas fa-images"></i>
+                                    <span>See more</span>
+                                </a>
+                                <a href="https://github.com/decentishDev/Sweetgreen-games"
+                                    class="text-gray-200 hover:text-gray-400 flex items-center space-x-2">
+                                    <i class="fa-brands fa-github"></i>
+                                    <span>View Github</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative h-[50vh] w-full rounded-[32px] border border-slate-700 p-6 flex flex-col lg:p-10 text-left">
+                        <h3 class="text-lg font-semibold text-gray-200">Particle Simulation</h3>
+                        <p class="mt-2 text-sm text-gray-400">
+                            A simple particle effect (not really a simulation, I'd say) made in JavaScript and HTML canvas. Looks cool as a site background.
+                        </p>
+                    
+                        <div class="flex-grow"></div>
+                    
+                        <div class="flex justify-between mt-auto space-x-4 text-sm">
+                            <a href="/particles"
+                                class="text-gray-200 hover:text-gray-400 flex items-center space-x-2">
+                                <i class="fas fa-arrow-up-right-from-square"></i>
+                                <span>Open simulation</span>
+                            </a>
+                            <a href="https://github.com/your-repo" class="text-gray-200 hover:text-gray-400 flex items-center space-x-2">
+                                <i class="fab fa-github"></i>
+                                <span>View on GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row bg-slate-600 bg-opacity-10 backdrop-blur-md rounded-[32px] shadow-lg overflow-hidden p-6 text-left">
+                        <div class="w-full lg:w-1/3 mb-6 lg:mb-0 lg:mr-6">
+                            <img src="img/ArisePreview.jpg" alt="Arise app preview"
+                                class="rounded-[16px] w-full h-full object-cover">
+                        </div>
+                        <div class="flex flex-col justify-between flex-1 space-y-4 lg:p-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">Arise</h3>
+                                <!-- <div class="text-gray-200 flex items-center space-x-2 font-bold mt-2">
+                                    <i class="fas fa-medal"></i>
+                                    <span>National Winner</span>
+                                </div> -->
+                                <p class="text-gray-200 mt-4 text-sm sm:text-base">
+                                    Arise is a unique alarm app that wakes your brain up faster in the morning. It connects to the iOS alarms, and prompts math (or other) to solve before the alarm turns off. This is designed to make it less likely to fall back asleep, and more likely to get up and start the day. Built as a part of MadCoders, using React Native.
+                                </p>
+                            </div>
+                            <div class="flex justify-between mt-auto space-x-4 text-sm">
+                                <a href=""
+                                    class="text-gray-500 hover:text-gray-500 flex items-center space-x-2">
+                                    <i class="fas fa-images"></i>
+                                    <span>See more</span>
+                                </a>
+                                <a href="https://github.com/FayzaanV/MathAlarm/"
+                                    class="text-gray-200 hover:text-gray-400 flex items-center space-x-2">
+                                    <i class="fa-brands fa-github"></i>
+                                    <span>View Github</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <h2 class="text-white font-bold text-3xl w-full pt-12 pb-4">
+                    Pictorial
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <!-- Benchmark Carousel -->
+                    <div class="carousel">
+                        <div class="relative">
+
+                            <div class="relative aspect-[3/4] rounded-[16px] overflow-hidden">
+
+                                <div class="carouselContainer flex w-full h-full transition-transform duration-500 ease-out">
+
+                                    <img src="img/benchmark/benchmark1.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/benchmark/benchmark2.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/benchmark/benchmark3.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/benchmark/benchmark4.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/benchmark/benchmark5.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/benchmark/benchmark6.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/benchmark/benchmark7.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/benchmark/benchmark8.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/benchmark/benchmark9.png" class="w-full h-full object-cover flex-shrink-0">
+
+                                </div>
+
+                                <button class="prevBtn absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-2 rounded-full">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+
+                                <button class="nextBtn absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-2 rounded-full">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="flex justify-between items-center mt-3 px-1">
+                                <span class="text-gray-200 text-sm font-semibold">
+                                    01. Benchmark.
+                                </span>
+
+                                <span class="imageCounter text-gray-400 text-sm">
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Candles Carousel -->
+                    <div class="carousel">
+                        <div class="relative">
+
+                            <div class="relative aspect-[3/4] rounded-[16px] overflow-hidden">
+
+                                <div class="carouselContainer flex w-full h-full transition-transform duration-500 ease-out">
+
+                                    <img src="img/candles/candles1.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/candles/candles2.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/candles/candles3.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/candles/candles4.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/candles/candles5.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/candles/candles6.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/candles/candles7.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/candles/candles8.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/candles/candles9.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/candles/candles10.png" class="w-full h-full object-cover flex-shrink-0">
+
+                                </div>
+
+                                <button class="prevBtn absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-2 rounded-full">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+
+                                <button class="nextBtn absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-2 rounded-full">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="flex justify-between items-center mt-3 px-1">
+                                <span class="text-gray-200 text-sm font-semibold">
+                                    02. Candles.
+                                </span>
+
+                                <span class="imageCounter text-gray-400 text-sm">
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Resolution Carousel -->
+                    <div class="carousel">
+                        <div class="relative">
+
+                            <div class="relative aspect-[3/4] rounded-[16px] overflow-hidden">
+
+                                <div class="carouselContainer flex w-full h-full transition-transform duration-500 ease-out">
+
+                                    <img src="img/resolution/resolution_00.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/resolution/resolution_01.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/resolution/resolution_02.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/resolution/resolution_03.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/resolution/resolution_04.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/resolution/resolution_05.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/resolution/resolution_06.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/resolution/resolution_07.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/resolution/resolution_08.png" class="w-full h-full object-cover flex-shrink-0">
+                                    <img src="img/resolution/resolution_09.png" class="w-full h-full object-cover flex-shrink-0">
+
+                                </div>
+
+                                <button class="prevBtn absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-2 rounded-full">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+
+                                <button class="nextBtn absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-2 rounded-full">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+
+                            </div>
+
+                            <div class="flex justify-between items-center mt-3 px-1">
+                                <span class="text-gray-200 text-sm font-semibold">
+                                    03. Resolution.
+                                </span>
+
+                                <span class="imageCounter text-gray-400 text-sm">
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <h2 class="text-white font-bold text-3xl w-full pt-12 pb-6">
+                    Assorted art
+                </h2>
+
+                <div class="columns-2 md:columns-3 gap-4">
+                    <img src="img/craigfederighi-portrait_orig.png" class="mb-4" />
+                    <img src="img/garfield_orig.png" class="mb-4" />
+                    <img src="img/masking1_orig.png" class="mb-4" />
+                    <img src="img/ml-logo_orig.png" class="mb-4 invert" />
+                    <img src="img/robotrumbledesign_orig.png" class="mb-4" />
+                    <img src="img/spatulacard_orig.png" class="mb-4" />
+                </div>
+
+                <script>
+                document.querySelectorAll(".carousel").forEach((carousel) => {
+
+                    const container = carousel.querySelector(".carouselContainer");
+                    const images = carousel.querySelectorAll("img");
+                    const prevBtn = carousel.querySelector(".prevBtn");
+                    const nextBtn = carousel.querySelector(".nextBtn");
+                    const counter = carousel.querySelector(".imageCounter");
+
+                    let index = 0;
+
+                    function update() {
+                        container.style.transform = `translateX(-${index * 100}%)`;
+                        counter.textContent = `${index + 1} / ${images.length}`;
+                    }
+
+                    prevBtn.addEventListener("click", () => {
+                        index = (index - 1 + images.length) % images.length;
+                        update();
+                    });
+
+                    nextBtn.addEventListener("click", () => {
+                        index = (index + 1) % images.length;
+                        update();
+                    });
+
+                    update();
+                });
+                </script>
+
+            </div>
+        </div>
     </div>
     <canvas id="bg"></canvas>
     <script>
@@ -73,7 +458,7 @@
 
             const state = isMobile ? {
                 count: 4000,
-                decay: 0.34,
+                decay: 0.35,
                 speed: 1.2,
                 scale: 0.0018,
                 glow: 0.5,
